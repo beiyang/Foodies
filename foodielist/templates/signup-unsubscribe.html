@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% block content %}
+<div class="container">
+    <div class="row wdi360-shift-down">
+        <div class="span8 offset2 wdi360-content" style="text-align:center;">
+            <img src="{{ STATIC_URL }}img/wdifoodielogo.png" id="logo">
+        </div>
+    </div>
+    <div class="row">
+        <div class="span8 offset2 wdi360-content">
+            <form class="form-horizontal" action="/" method="POST">
+                {% csrf_token %}
+                <div class="control-group">
+                    <label class="controls"><h3>Sign Up</h3><span class="help-inline error">{{ form.non_field_errors  }}</span></label>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputEmail">Name</label>
+
+                    <div class="controls">
+                        {{ form.name }}
+                        <span class="help-inline error">{{ form.name.errors }}</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputEmail">Disney Email</label>
+
+                    <div class="controls">
+                        {{ form.email }}
+                        <span class="help-inline error">{{ form.email.errors }}</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputEmail">Interests</label>
+
+                    <div class="controls">
+                        <label class="checkbox">
+                            {{ form.cooking }} cooking
+                        </label>
+                        <label class="checkbox">
+                            {{ form.fine }} fine dining
+                        </label>
+                        <label class="checkbox">
+                            {{ form.casual }} casual dining
+                        </label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn">Sign-Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span8 offset2 wdi360-content">
+            <form class="form-horizontal" action="{% url 'unsubscribe' %}" method="POST">
+                {% csrf_token %}
+                <div class="control-group">
+                    <label class="controls"><h3>Unsubscribe</h3><span class="help-inline error">{{ unform.non_field_errors  }}</span></label>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputEmail">Disney Email</label>
+
+                    <div class="controls">
+                        {{ unform.email }}
+                        <span class="help-inline error">{{ unform.email.errors }}</span>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn">Unsubscribe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    var alertMessage = "{{ alert|safe }}";
+    if( alertMessage != "" ){
+        alert(alertMessage);
+    }
+})
+</script>
+{% endblock %}

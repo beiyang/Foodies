@@ -1,0 +1,8 @@
+venv
+dev-email
+*.pyc
+*.db
+.settings
+/.DS_Store
+.DS_Store
+.idea

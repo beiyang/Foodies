@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+html {
+	min-height: 100%;
+}
+body {
+	background-image:url(../img/naparosebg.jpg);
+	background-size:cover;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+
+h3 {
+    color: #999;
+}
+
+#logo {
+	margin-top:20px;
+}
+
+.wdi360-content {
+	background-color: rgba(255,255,255,0.9);
+	padding: 10px;
+}
+
+.wdi360-shift-down {
+	margin-top: 40px;
+}
+
+/* Bootstrap overrides */
+.form-actions {
+	border: none;
+	background-color: transparent;
+}
+
+.errorlist {
+    color: #993300;
+}
+
+.errorlist li {
+    list-style-type: none;
+}
