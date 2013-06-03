@@ -1,4 +1,8 @@
 # Django settings for Foodies project.
+import platform
+DEPLOY = False
+if platform.node() in ["web335.webfaction.com"]:
+    DEPLOY = True
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -29,7 +33,7 @@ ALLOWED_HOSTS = []
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Pacific'
+TIME_ZONE = 'America/Los_Angeles'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -61,7 +65,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = '/home/wdifoodies/webapps/foodies/djangoapp/static'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -154,3 +158,19 @@ LOGGING = {
         },
     }
 }
+
+
+#Deployment settings
+if DEPLOY:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2', #'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'wdifoodies',
+            'USER': 'wdifoodies',
+            'PASSWORD': 'vsgiy4py',
+            'HOST': '',
+            'PORT': '',
+            }
+        }
+    #no debug on deployment
+    DEBUG = False
